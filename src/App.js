@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import { useState } from 'react';
 import './App.css';
 import Alert from './components/Alert';
@@ -10,7 +11,20 @@ function App(props) {
 
   const [mode, setMode]=useState('light');//whether dark mode enabled
   const [alert, setAlert]=useState(null);
-  
+
+  const [bgColor,setBgColor]=useState('#152238')
+
+  const SetBackground = (color)=>{
+    
+    if(mode==='dark')
+    {
+      setBgColor(color);
+      document.body.style.backgroundColor =bgColor ;
+      console.log("re-render")
+    }
+  }
+console.log("outside")
+  //to set alert object variable from another component
   const showAlert= (message, type) => {
     setAlert({
       msg:message,
@@ -25,19 +39,31 @@ function App(props) {
   const toggleMode = () =>{
     if(mode==='light'){
       setMode('dark');
-      document.body.style.backgroundColor = '#042743';
+      document.body.style.backgroundColor =bgColor ;
       showAlert("Dark mode activated.", "success");
+// -----------------------------------------
+      // document.title="DarkMode"
+      //To attract user attention
+      // setInterval(() => {
+      //   document.title="TextUtils is Amazing"
+      // }, 2800);
+      // setInterval(() => {
+      //   document.title=" Install TextUtils now"
+      // }, 4000);
+//--------------------------------------------
+
+
     }
     else{
       setMode('light');
-      document.body.style.backgroundColor = 'white';
+      document.body.style.backgroundColor = "white";
       showAlert("Light mode activated.", "success");
     }
    
   }
   return (
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} SetBackground={SetBackground}/>
       <Alert alert={alert}/>
       <div className="container my-3">
       <TextForm heading="Enter the text to analyze below:" mode={mode} showAlert={showAlert} />

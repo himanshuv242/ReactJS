@@ -17,7 +17,7 @@ export default function Navbar(props) {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <Link className="nav-link" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/about">About</Link>
@@ -25,15 +25,12 @@ export default function Navbar(props) {
         </li>
         
       </ul>
-      {/* Theme buttons */}
-      <div className="container theme" >
-  <button type="button" className="btn" style={{backgroundColor:'#581845', color:'white', height:'22px',minWidth:'30px', borderRadius:'10px',marginRight:'5px',borderWidth:'1px',borderColor:'white'}} onClick={()=> props.SetBackground('#581845')}/>
-  <button type="button" className="btn" style={{backgroundColor:'#152238', color:'white', height:'22px',width:'30px', borderRadius:'10px',marginRight:'5px',borderWidth:'1px',borderColor:'white'}} onClick={()=> props.SetBackground('#152238')}/>
-  <button type="button" className="btn" style={{backgroundColor:'#004A06', color:'white', height:'22px',width:'30px', borderRadius:'10px',marginRight:'5px',borderWidth:'1px',borderColor:'white'}} onClick={()=> props.SetBackground('#004A06')}/>
-</div>
+      
+      
+
       <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
           <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
-          <label className="form-check-label " htmlFor="flexSwitchCheckDefault" >Enable {props.mode} Mode</label>
+          <label className="form-check-label " htmlFor="flexSwitchCheckDefault" >{props.mode==='light'?'Dark':'Light'} Mode</label>
       </div>
     </div>
   </div>

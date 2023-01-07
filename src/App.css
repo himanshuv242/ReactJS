@@ -36,4 +36,7 @@
     transform: rotate(360deg);
   }
 }
-
+/* for changing accordian arrow colors */
+.accordion-button::after {
+  filter: invert(1);
+}
